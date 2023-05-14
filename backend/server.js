@@ -1,11 +1,14 @@
 const express = require('express');
 const dbConnect= require('./Database/index');
-
+const router = require('./Routes/auth');
 const app = express();
-const{PORT}=require('./Config')
+const{PORT}=require('./Config');
+
+
+app.use(express.json());
+app.use(router);
 
 dbConnect();
 
-app.get('/',(req,res)=>res.json({message:`i am learning backend and new things`}));
 
 app.listen(PORT,console.log(`our app is running on port :${PORT}` ));
